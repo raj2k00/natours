@@ -13,16 +13,8 @@ const {
   isLoggedIn,
   protect,
 } = require("../controllers/authController");
-const {
-  createBookingCheckout,
-} = require("../controllers/bookingController");
 
-router.get(
-  "/",
-  createBookingCheckout,
-  isLoggedIn,
-  getAllTours
-);
+router.get("/", isLoggedIn, getAllTours);
 
 router.get("/tour/:slug", isLoggedIn, getTour);
 
