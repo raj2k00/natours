@@ -27,7 +27,6 @@ export const login = async (email, password) => {
 
 export const logout = async () => {
   try {
-    console.log("im working form logout form");
     const res = await axios({
       method: "GET",
       url: "http://127.0.0.1:5000/api/v1/users/logout",
@@ -35,7 +34,7 @@ export const logout = async () => {
     if ((res.data.status = "success"))
       location.reload(true);
   } catch (err) {
-    console.log("erorr logging out");
+    // console.log("erorr logging out");
     console.log(err);
     showAlert("error", "Error logging out! Try again.");
   }

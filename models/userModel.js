@@ -110,7 +110,7 @@ userSchema.methods.createPasswordResetToken = function () {
     .createHash("sha256")
     .update(resetToken)
     .digest("hex");
-  console.log(resetToken, this.passwordResetToken);
+  // console.log(resetToken, this.passwordResetToken);
   this.passwordResetTokenExpires =
     Date.now() + 5 * 60 * 1000; // Expire-Time 5 minutes after issuing
 

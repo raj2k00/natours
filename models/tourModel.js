@@ -177,14 +177,14 @@ tourSchema.pre(/^find/, function (next) {
   });
   next();
 });
-tourSchema.post(/^find/, function (doc, next) {
-  console.log(
-    `this query hook took ${
-      Date.now() - this.start
-    } milliseconds`
-  );
-  next();
-});
+// tourSchema.post(/^find/, function (doc, next) {
+//   console.log(
+//     `this query hook took ${
+//       Date.now() - this.start
+//     } milliseconds`
+//   );
+//   next();
+// });
 
 //AGGREGATION MIDDLEWARE
 //this -keyword represents currert aggregation pipeline

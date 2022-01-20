@@ -13,7 +13,7 @@ exports.getAllTours = catchAsync(async (req, res, next) => {
 });
 
 exports.getTour = catchAsync(async (req, res, next) => {
-  console.log(req.params.slug);
+  // console.log(req.params.slug);
   const tour = await Tour.findOne({
     slug: req.params.slug,
   }).populate({
