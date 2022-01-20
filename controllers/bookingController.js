@@ -60,14 +60,14 @@ exports.getCheckoutSession = catchAsync(
 //   }
 // );
 const createBookingCheckout = async (session) => {
-  console.log(session);
+  // console.log(session);
   const tour = session.client_reference_id;
   const user = (
     await User.findOne({ email: session.customer_email })
   ).id;
-  const price =
-    session.line_item_group.line_items[0].total / 100;
+  const price = session.amount_total / 100;
   console.log(tour, user, price);
+  console.log("Saving the Booking");
   await Booking.create({ tour, user, price });
 };
 
