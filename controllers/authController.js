@@ -12,7 +12,7 @@ const signedToken = (id) =>
     expiresIn: process.env.JWT_EXPIRES_IN,
   });
 
-const createTokenSend = (user, statusCode, res) => {
+const createTokenSend = (user, statusCode, req, res) => {
   const token = signedToken(user._id);
   const cookieOption = {
     expires: new Date(
@@ -24,9 +24,10 @@ const createTokenSend = (user, statusCode, res) => {
           1000
     ),
     httpOnly: true,
+    secure:
+      req.secure ||
+      req.headers["x-forwarded-proto" === "https"],
   };
-  if (process.env.NODE_ENV === "production")
-    cookieOption.secure = true;
   res.cookie("jwt", token, cookieOption);
 
   // removing the password
