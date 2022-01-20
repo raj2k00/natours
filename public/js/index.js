@@ -4,9 +4,12 @@ import { displayMap } from "./mapbox.mjs";
 import { login, logout } from "./login.mjs";
 import { updateSettings } from "./updateSettings.mjs";
 import { bookTour } from "./stripe.mjs";
+import { showAlert } from "./alerts.mjs";
 
 // DOM ELEMENTS
 const mapBox = document.getElementById("map");
+const alertMessage =
+  document.querySelector("body").dataset.alert;
 const loginForm = document.querySelector(".form--login");
 const logOutBtn = document.querySelector(
   ".nav__el--logout"
@@ -90,4 +93,8 @@ if (bookBtn) {
     const { tourId } = e.target.dataset;
     bookTour(tourId);
   });
+}
+
+if (alertMessage) {
+  showAlert("success", alertMessage, 10);
 }
