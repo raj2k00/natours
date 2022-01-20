@@ -21,7 +21,7 @@ exports.getCheckoutSession = catchAsync(
       // }&price=${tour.price}`,
       success_url: `${req.protocol}://${req.get(
         "host"
-      )}/my-tours`,
+      )}/my-tours?alert=booking`,
       cancel_url: `${req.protocol}://${req.get(
         "host"
       )}/tour/${tour.slug}`,
@@ -66,7 +66,7 @@ const createBookingCheckout = async (session) => {
     await User.findOne({ email: session.customer_email })
   ).id;
   const price = session.amount_total / 100;
-  console.log(tour, user, price);
+  // console.log(tour, user, price);
   console.log("Saving the Booking");
   await Booking.create({ tour, user, price });
 };

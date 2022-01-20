@@ -140,7 +140,7 @@ app.use(
 app.use(compression());
 //our OWN MIDDLEWARE  that gets added to the middleware stack remember to add next()!
 app.use((req, res, next) => {
-  // console.log("Hi from the server 😜");
+  console.log("Hi from the server 😜");
   req.requestTime = new Date().toISOString();
   // console.log(req.cookies);
   next();
