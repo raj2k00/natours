@@ -5,6 +5,7 @@ const helmet = require("helmet");
 const mongoSanitize = require("express-mongo-sanitize");
 const xss = require("xss-clean");
 const hpp = require("hpp");
+const compression = require("compression");
 // eslint-disable-next-line import/no-unresolved
 const rateLimit = require("express-rate-limit");
 const cookieParser = require("cookie-parser");
@@ -119,7 +120,7 @@ app.use(
     ],
   })
 );
-
+app.use(compression());
 //our OWN MIDDLEWARE  that gets added to the middleware stack remember to add next()!
 app.use((req, res, next) => {
   // console.log("Hi from the server 😜");
