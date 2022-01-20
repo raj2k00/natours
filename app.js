@@ -5,6 +5,7 @@ const helmet = require("helmet");
 const mongoSanitize = require("express-mongo-sanitize");
 const xss = require("xss-clean");
 const hpp = require("hpp");
+const cors = require("cors");
 const compression = require("compression");
 // eslint-disable-next-line import/no-unresolved
 const rateLimit = require("express-rate-limit");
@@ -22,6 +23,13 @@ const app = express();
 app.enable("trust proxy");
 app.set("view engine", "pug");
 app.set("views", path.join(__dirname, "views"));
+
+//Impelementing CORS policy
+//This will also cross origin resourse sharing for simple requests like
+//GET and POST
+app.use(cors());
+//For complex request like PATCH,DELETE,PUT
+app.options("*", cors());
 
 app.use(express.static(path.join(__dirname, "public")));
 //MIDDLEWARE to get the data from the body
