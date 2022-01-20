@@ -10,6 +10,7 @@ exports.alerts = (req, res, next) => {
     res.locals.alert =
       "Your booking was successfull! Please check your mail for a confirmation, If your booking does'nt show up in bookings tab. Please come back later and check";
   }
+  next();
 };
 
 exports.getAllTours = catchAsync(async (req, res, next) => {
