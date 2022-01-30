@@ -58,7 +58,7 @@ const sendProductionError = (err, req, res) => {
       // Programming error or third party library error not sending details
     }
     // Logging the error
-    console.error("ERROR 💥", err);
+    console.error("ERROR 💥 UNKNOWN ERROR HAPPEND", err);
     //Sending Genering Message
     return res.status(500).json({
       status: "error",
